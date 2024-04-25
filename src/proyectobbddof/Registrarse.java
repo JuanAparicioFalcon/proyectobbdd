@@ -2,7 +2,6 @@ package proyectobbddof;
 
 import java.awt.Color;
 import java.awt.EventQueue;
-
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -12,11 +11,12 @@ import javax.swing.border.EmptyBorder;
 import java.awt.Font;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-
+import PlantillaConexionbbdd.ConexionMySQL;
 
 
 public class Registrarse extends JFrame {
 
+	ConexionMySQL conect=new ConexionMySQL("root","test","login_proyecto");
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JTextField textFieldDNI;
@@ -105,7 +105,7 @@ public class Registrarse extends JFrame {
     	btnNewButton.addMouseListener(new MouseAdapter() {
     		@Override
     		public void mouseClicked(MouseEvent e) {
-    			
+
     		}
     	});
     	btnNewButton.setFont(new Font("Mongolian Baiti", Font.BOLD, 11));

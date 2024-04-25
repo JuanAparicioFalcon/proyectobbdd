@@ -105,7 +105,6 @@ public class Registrarse extends JFrame {
     	btnNewButton.addMouseListener(new MouseAdapter() {
     		@Override
     		public void mouseClicked(MouseEvent e) {
-    			mouse
     			
     		}
     	});

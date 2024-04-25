@@ -10,6 +10,8 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 import java.awt.Font;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 
 
@@ -100,6 +102,13 @@ public class Registrarse extends JFrame {
     	textFieldContraseña.setColumns(10);
     	
     	JButton btnNewButton = new JButton("REGISTRAR USUARIO");
+    	btnNewButton.addMouseListener(new MouseAdapter() {
+    		@Override
+    		public void mouseClicked(MouseEvent e) {
+    			mouse
+    			
+    		}
+    	});
     	btnNewButton.setFont(new Font("Mongolian Baiti", Font.BOLD, 11));
     	btnNewButton.setBounds(135, 187, 159, 32);
     	getContentPane().add(btnNewButton);

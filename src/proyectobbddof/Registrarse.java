@@ -100,7 +100,8 @@ public class Registrarse extends JFrame {
     	textFieldContraseña.setColumns(10);
     	
     	JButton btnNewButton = new JButton("REGISTRAR USUARIO");
-    	btnNewButton.setBounds(148, 200, 139, 23);
+    	btnNewButton.setFont(new Font("Mongolian Baiti", Font.BOLD, 11));
+    	btnNewButton.setBounds(135, 187, 159, 32);
     	getContentPane().add(btnNewButton);
 	}
 

@@ -5,42 +5,67 @@ import Conexionbbdd.ConexionMysql;
 
 public class usuario {
 	
-	private String username;
-	private String password;
+	private String Usuario;
+	private String Contraseña;
+	private String DNI;
+	private String Email;
 
 
-public usuario(String username, String password) {
-	this.setUsername(username);
-	this.setPassword(password);
+public usuario(String Usuario, String Contraseña, String DNI, String Email) {
+	this.setUsername(Usuario);
+	this.setContraseña(Contraseña);
+	this.setDNI(DNI);
+	this.setEmail(Email);
 }
 
 
-public String getPassword() {
-	return password;
+public String getContraseña() {
+	return Contraseña;
 }
 
 
-public void setPassword(String password) {
-	this.password = password;
+public void setContraseña(String Contraseña) {
+	this.Contraseña = Contraseña;
 }
 
 
-public String getUsername() {
-	return username;
+public String getUsuario() {
+	return Usuario;
 }
 
 
-public void setUsername(String username) {
-	this.username = username;
+public void setUsername(String Usuario) {
+	this.Usuario = Usuario;
 }
 
-public static boolean login(String username, String password) {
+public String getDNI() {
+	return DNI;
+}
+
+
+public void setDNI(String dNI) {
+	DNI = dNI;
+}
+
+
+public String getEmail() {
+	return Email;
+}
+
+
+public void setEmail(String email) {
+	Email = email;
+}
+
+/*METODO LOGIN */
+public static boolean login(String Usuario, String Contraseña) {
 	Connection connection = ConexionMysql.conectar();
 	if(connection !=null) {
 		try {
-			PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM Usuarios WHERE username =? AND password =?");
-			preparedStatement.setString(1,username);
-			preparedStatement.setString(2,password);
+			PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM Usuarios WHERE Usuario =? AND Contraseña =?");
+			preparedStatement.setString(1,Usuario);
+			preparedStatement.setString(2,Contraseña);
+			
 		
 			ResultSet resultSet = preparedStatement.executeQuery();
 			boolean hasUser = resultSet.next();
@@ -53,21 +78,28 @@ public static boolean login(String username, String password) {
 	}
 }
 
-public static boolean insert(String username, String password) {
+/*METODO registrar */
+public static boolean registrar(String Usuario, String Contraseña, String DNI, String Email) {
 	Connection connection = ConexionMysql.conectar();
 	if(connection !=null) {
 		try {
-			PreparedStatement PreparedStatement = connection.prepareStatement("INSERT INTO Usuarios (username, password) VALUES (?, ?)");
-			PreparedStatement.setString(1,username);
-			PreparedStatement.setString(2,password);
+			PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO Usuarios (Usuario, Contraseña, DNI, Email) VALUES (?, ?, ?, ?)");
+			preparedStatement.setString(1,Usuario);
+			preparedStatement.setString(2,Contraseña);
+			preparedStatement.setString(3,DNI);
+			preparedStatement.setString(2,Email);
 			
-			ResultSet result = PreparedStatement.executeUpdate();
+			int result = preparedStatement.executeUpdate();
 			connection.close();
 			return result > 0;
 		} catch (SQLException e) {
-			System.out.println("Error al intentar login: " + e.getMessage());
+			System.out.println("Error al crear el Usuario " + e.getMessage());
 			return false;
 			}
 	}
+	return false;
 }
+
+
+
 }

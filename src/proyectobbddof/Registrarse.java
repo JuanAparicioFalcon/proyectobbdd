@@ -64,7 +64,7 @@ public class Registrarse extends JFrame {
     	lblNewLabel_4.setBounds(304, 114, 56, 14);
     	getContentPane().add(lblNewLabel_4);
     	
-    	lblNewLabel_3 = new JLabel("Gmail");
+    	lblNewLabel_3 = new JLabel("Email");
     	lblNewLabel_3.setFont(new Font("Mongolian Baiti", Font.BOLD, 14));
     	lblNewLabel_3.setBounds(95, 114, 48, 14);
     	getContentPane().add(lblNewLabel_3);

@@ -1,13 +1,8 @@
 package Conexionbbdd;
 
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.Calendar;
-import java.util.TimeZone;
+import java.sql.*;
+import java.util.*;
 
 public class ConexionMysql {
 	 // Base de datos a la que nos conectamos

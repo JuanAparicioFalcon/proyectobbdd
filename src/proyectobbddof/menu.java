@@ -83,7 +83,7 @@ public class menu extends JFrame {
 		lblUsuario.setBounds(1306, 274, 161, 74);
 		contentPane.add(lblUsuario);
 		
-		JLabel lblFondo = new JLabel("");
+		JLabel lblFondo =  new JLabel("");
 		lblFondo.setForeground(new Color(0, 128, 0));
 		lblFondo.setBounds(0, 0, 1980, 1080);
 		lblFondo.setFont(new Font("Times New Roman", Font.PLAIN, 18));

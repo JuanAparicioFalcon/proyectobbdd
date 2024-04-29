@@ -8,6 +8,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.sql.SQLException;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -18,6 +19,8 @@ import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
+
+import Conexionbbdd.ConexionMysql;
 
 
 public class InicioSesion extends JFrame {
@@ -92,18 +95,24 @@ public class InicioSesion extends JFrame {
 		btnNewButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-			String Usuario="admin";
-			String Contraseña="1234";
-			
-			String Password=new String(passwordField.getPassword());
-			if(textField.getText().equals(Usuario) && Password.equals(Contraseña)) {
-				
-			}else {
-				JOptionPane.showInputDialog(this," Usuario / Contraseña incorrecta");
-			}
-				
-			}
-		});
+				ConexionMysql conexion = new ConexionMysql("root","test","login_proyecto");
+    			try {
+					conexion.conectar();
+					String sentencia="INSERT INTO Usuarios (Nombre, Email, Contraseña, DNI) VALUES ();
+					conexion.ejecutarInsertDeleteUpdate(sentencia);
+				} catch (SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				} finally {
+					try {
+						conexion.desconectar();
+					} catch (SQLException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+				}
+    		}
+    	});
 		btnNewButton.setFont(new Font("Mongolian Baiti", Font.PLAIN, 16));
 		btnNewButton.setForeground(new Color(255, 255, 255));
 		btnNewButton.setBackground(new Color(0, 128, 0));

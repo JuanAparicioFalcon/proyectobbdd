@@ -20,7 +20,7 @@ public class Registrarse extends JFrame {
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JTextField textFieldDNI;
-    private JTextField textFieldNombre;
+    private  JTextField textFieldNombre;
     private JTextField textFieldGmail;
     private JTextField textFieldContraseña;
     private JLabel lblNewLabel_1;
@@ -44,12 +44,10 @@ public class Registrarse extends JFrame {
 		});
 	}
 
-	/**
-	 * Create the frame.
-	 * @param b 
-	 * @param object 
-	 */
+	
 	public Registrarse() {
+		
+		
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
@@ -105,7 +103,7 @@ public class Registrarse extends JFrame {
     	btnNewButton.addMouseListener(new MouseAdapter() {
     		@Override
     		public void mouseClicked(MouseEvent e) {
-
+    			
     		}
     	});
     	btnNewButton.setFont(new Font("Mongolian Baiti", Font.BOLD, 11));

@@ -32,9 +32,9 @@ public class ConexionMysql {
      */
     public ConexionMysql(String usuario, String pass, String bd) {
         HOST = "localhost";
-        USUARIO = "root";
-        PASS = "test";
-        BD = "login_proyecto";
+        USUARIO = usuario;
+        PASS = pass;
+        BD = bd;
         connection = null;
     }
 

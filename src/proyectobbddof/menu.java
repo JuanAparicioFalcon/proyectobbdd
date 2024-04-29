@@ -36,8 +36,9 @@ public class menu extends JFrame {
 			public void run() {
 				try {
 					InicioSesion frame = new InicioSesion();
-				
 					frame.setVisible(true);
+					
+					
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -81,12 +82,6 @@ public class menu extends JFrame {
 		lblUsuario.setBackground(new Color(0, 128, 0));
 		lblUsuario.setBounds(1306, 274, 161, 74);
 		contentPane.add(lblUsuario);
-		
-		JLabel lblTitulo = new JLabel("App oficial del Real Betis Balompié");
-		lblTitulo.setForeground(new Color(0, 128, 0));
-		lblTitulo.setFont(new Font("Mongolian Baiti", Font.BOLD, 60));
-		lblTitulo.setBounds(38, -36, 1062, 230);
-		contentPane.add(lblTitulo);
 		
 		JLabel lblFondo = new JLabel("");
 		lblFondo.setForeground(new Color(0, 128, 0));

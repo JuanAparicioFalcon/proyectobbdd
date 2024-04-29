@@ -18,6 +18,7 @@ public class RegistrarUsuario extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
+				
 					RegistrarUsuario frame = new RegistrarUsuario();
 					frame.setVisible(true);
 				} catch (Exception e) {

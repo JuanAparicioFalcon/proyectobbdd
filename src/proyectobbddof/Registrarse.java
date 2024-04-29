@@ -37,6 +37,8 @@ public class Registrarse extends JFrame {
 				try {
 					Registrarse frame = new Registrarse();
 					frame.setVisible(true);
+					
+					
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -78,7 +80,7 @@ public class Registrarse extends JFrame {
     	getContentPane().add(lblNewLabel_1);
     	
     	textFieldDNI = new JTextField();
-    	textFieldDNI.setForeground(new Color(255, 255, 255));
+    	textFieldDNI.setForeground(new Color(0, 0, 0));
     	textFieldDNI.setBackground(new Color(255, 255, 255));
     	textFieldDNI.setBounds(258, 139, 131, 23);
     	getContentPane().add(textFieldDNI);

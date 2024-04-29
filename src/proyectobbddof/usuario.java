@@ -43,8 +43,8 @@ public String getDNI() {
 }
 
 
-public void setDNI(String dNI) {
-	DNI = dNI;
+public void setDNI(String DNI) {
+	this.DNI = DNI;
 }
 
 

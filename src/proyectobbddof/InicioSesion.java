@@ -98,7 +98,7 @@ public class InicioSesion extends JFrame {
 				ConexionMysql conexion = new ConexionMysql("root","test","login_proyecto");
     			try {
 					conexion.conectar();
-					String sentencia="INSERT INTO Usuarios (Nombre, Email, Contraseña, DNI) VALUES ();
+					String sentencia="SELECT ";
 					conexion.ejecutarInsertDeleteUpdate(sentencia);
 				} catch (SQLException e1) {
 					// TODO Auto-generated catch block

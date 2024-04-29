@@ -59,22 +59,22 @@ public void setEmail(String email) {
 
 /*METODO LOGIN */
 public static boolean login(String Usuario, String Contraseña) {
-	Connection connection = ConexionMysql.conectar();
-	if(connection !=null) {
-		try {
-			PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM Usuarios WHERE Usuario =? AND Contraseña =?");
-			preparedStatement.setString(1,Usuario);
-			preparedStatement.setString(2,Contraseña);
-			
-		
-			ResultSet resultSet = preparedStatement.executeQuery();
-			boolean hasUser = resultSet.next();
-			connection.close();
-			return hasUser;
+	ConexionMysql conexion = new ConexionMysql("root","test","login_proyecto");
+	try {
+		conexion.conectar();
+		String consulta = "SELECT * FROM Usuarios WHERE Usuario="+Usuario+;
+		ResultSet resultado = conexion.ejecutarSelect(consulta);
 		} catch (SQLException e) {
 		System.out.println("Error al intentar login: " + e.getMessage());
 		return false;
-		}
+		} finally {
+			try {
+				conexion.desconectar();
+			} catch (SQLException e){
+				System.out.println("Error al intentar login: " + e.getMessage());
+			}
+			
+	
 	}
 }
 

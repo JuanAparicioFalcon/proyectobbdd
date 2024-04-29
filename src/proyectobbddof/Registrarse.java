@@ -8,9 +8,14 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
+
+import Conexionbbdd.ConexionMysql;
+
 import java.awt.Font;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.sql.SQLException;
+
 import PlantillaConexionbbdd.ConexionMySQL;
 
 
@@ -105,7 +110,22 @@ public class Registrarse extends JFrame {
     	btnNewButton.addMouseListener(new MouseAdapter() {
     		@Override
     		public void mouseClicked(MouseEvent e) {
-    			
+    			ConexionMysql conexion = new ConexionMysql("root","test","login_proyecto");
+    			try {
+					conexion.conectar();
+					String sentencia="INSERT INTO Usuarios (Nombre, Email, Contraseña, DNI) VALUES ('"+textFieldNombre.getText()+"','"+textFieldGmail.getText()+"','"+textFieldContraseña.getText()+"','"+textFieldDNI.getText()+"')";
+					conexion.ejecutarInsertDeleteUpdate(sentencia);
+				} catch (SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				} finally {
+					try {
+						conexion.desconectar();
+					} catch (SQLException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+				}
     		}
     	});
     	btnNewButton.setFont(new Font("Mongolian Baiti", Font.BOLD, 11));

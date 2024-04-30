@@ -71,9 +71,9 @@ public class InicioSesion extends JFrame {
 		passwordField = new JPasswordField();
 		passwordField.setBounds(1409, 387, 320, 35);
 		contentPane.add(passwordField);
-		
 		JLabel lblContraseña = new JLabel("Contraseña: ");
 		lblContraseña.setFont(new Font("Mongolian Baiti", Font.BOLD, 20));
+		
 		lblContraseña.setForeground(new Color(0, 128, 0));
 		lblContraseña.setBackground(new Color(0, 128, 0));
 		lblContraseña.setBounds(1279, 370, 176, 66);
@@ -106,7 +106,7 @@ public class InicioSesion extends JFrame {
 						ventanaMenu.setVisible(true);
 						dispose();
 					} else {
-						System.out.println("Error al intentar login.");
+						JOptionPane.showMessageDialog(null, "Fallo al iniciar sesión.");
 					}
 					
 				} catch (SQLException e1) {

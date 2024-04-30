@@ -116,11 +116,12 @@ public class Registrarse extends JFrame {
     			try {
 					conexion.conectar();
 					String sentencia2="INSERT INTO Usuarios (Nombre, Email, Contraseña, DNI) VALUES ('"+textFieldNombre.getText()+"','"+textFieldGmail.getText()+"','"+textFieldContraseña.getText()+"','"+textFieldDNI.getText()+"')";
-					float registro= conexion.ejecutarInsertDeleteUpdate(sentencia2);
+					 conexion.ejecutarInsertDeleteUpdate(sentencia2);
 					
-						menu cierreRegistro = new menu();
+						InicioSesion cierreRegistro = new InicioSesion();
 						cierreRegistro.setVisible(true);
 						dispose();
+					
 					
 				} catch (SQLException e1) {
 					// TODO Auto-generated catch block

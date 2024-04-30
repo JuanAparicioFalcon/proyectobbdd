@@ -35,7 +35,7 @@ public class menu extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					InicioSesion frame = new InicioSesion();
+					menu frame = new menu();
 				
 					frame.setVisible(true);
 				} catch (Exception e) {

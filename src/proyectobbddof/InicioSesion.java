@@ -8,6 +8,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import javax.swing.ImageIcon;
@@ -98,8 +99,16 @@ public class InicioSesion extends JFrame {
 				ConexionMysql conexion = new ConexionMysql("root","test","login_proyecto");
     			try {
 					conexion.conectar();
-					String sentencia="SELECT * FROM Usuarios WHERE Nombre='"+textField+"' AND Contraseña='"+passwordField+"'";
-					conexion.ejecutarInsertDeleteUpdate(sentencia);
+					String sentencia="SELECT * FROM Usuarios WHERE Nombre='"+textField.getText()+"' AND Contraseña='"+new String (passwordField.getPassword())+"'";
+					ResultSet inicio=conexion.ejecutarSelect(sentencia);
+					if(inicio.next()) {
+						menu ventanaMenu = new menu();
+						ventanaMenu.setVisible(true);
+						dispose();
+					} else {
+						System.out.println("Error al intentar login.");
+					}
+					
 				} catch (SQLException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();

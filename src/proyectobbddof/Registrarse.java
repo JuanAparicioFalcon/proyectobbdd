@@ -14,6 +14,7 @@ import Conexionbbdd.ConexionMysql;
 import java.awt.Font;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import PlantillaConexionbbdd.ConexionMySQL;
@@ -114,8 +115,13 @@ public class Registrarse extends JFrame {
     			ConexionMysql conexion = new ConexionMysql("root","test","login_proyecto");
     			try {
 					conexion.conectar();
-					String sentencia="INSERT INTO Usuarios (Nombre, Email, Contraseña, DNI) VALUES ('"+textFieldNombre.getText()+"','"+textFieldGmail.getText()+"','"+textFieldContraseña.getText()+"','"+textFieldDNI.getText()+"')";
-					conexion.ejecutarInsertDeleteUpdate(sentencia);
+					String sentencia2="INSERT INTO Usuarios (Nombre, Email, Contraseña, DNI) VALUES ('"+textFieldNombre.getText()+"','"+textFieldGmail.getText()+"','"+textFieldContraseña.getText()+"','"+textFieldDNI.getText()+"')";
+					float registro= conexion.ejecutarInsertDeleteUpdate(sentencia2);
+					
+						menu cierreRegistro = new menu();
+						cierreRegistro.setVisible(true);
+						dispose();
+					
 				} catch (SQLException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();

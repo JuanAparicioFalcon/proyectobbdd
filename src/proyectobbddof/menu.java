@@ -82,9 +82,20 @@ public class menu extends JFrame {
         	conexion.conectar();
             String query = "SELECT * FROM players WHERE " + field + " = ?";
             ResultSet inicio=conexion.ejecutarSelect(query);
-            if(inicio.next()) {
-            	
-            }
+           
+            
+
+                // Agregar los resultados a la tabla
+                while (inicio.next()) {
+                    String nombre = inicio.getString("nombre");
+                    String posicion = inicio.getString("posicion");
+                    String categoria = inicio.getString("categoria");
+                    int edad = inicio.getInt("edad");
+                    String nacionalidad = inicio.getString("nacionalidad");
+                    model.addRow(new Object[]{nombre, posicion, categoria, edad, nacionalidad});
+                }
+                
+                inicio.close();
             
             conexion.desconectar();
         } catch (SQLException ex) {

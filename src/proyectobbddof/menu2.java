@@ -30,9 +30,6 @@ public class menu2 extends JFrame {
     private static final long serialVersionUID = 1L;
     private JPanel contentPane;
     private JTextField searchField;
-    private int opbuscar;
-    private String valor;
-    private final Action action = new SwingAction();
     private JTable table;
    
     
@@ -51,11 +48,6 @@ public class menu2 extends JFrame {
     }
 
     public menu2() {
-    	
-			
-			
-			
-			
 			
 			
 		
@@ -124,36 +116,40 @@ public class menu2 extends JFrame {
         lblFondo.setIcon(iconoAjustado2);
         contentPane.add(lblFondo);
     }
+    
+    
 
     private void performSearch(String field, String value) {
+    	
+    	DefaultTableModel model = (DefaultTableModel) table.getModel();
+        model.setRowCount(0); // Limpiar la tabla antes de agregar nuevos resultados
+
         // TODO: Replace with actual database connection and query execution
-        try {
-            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/yourdatabase", "username", "password");
+    	try {
+        	ConexionMysql conexion = new ConexionMysql("root","test","login_proyecto");
+        	conexion.conectar();
             String query = "SELECT * FROM players WHERE " + field + " = ?";
-            PreparedStatement pst = conn.prepareStatement(query);
-            pst.setString(1, value);
-            ResultSet rs = pst.executeQuery();
+            ResultSet inicio=conexion.ejecutarSelect(query);
+           
+            
 
-            // Process the result set here or pass it to another component
-            // For now, we will just print to console
-            while (rs.next()) {
-                System.out.println(rs.getString("nombre") + ", " + rs.getString("posicion"));
-            }
-
-            rs.close();
-            pst.close();
-            conn.close();
+                // Agregar los resultados a la tabla
+                while (inicio.next()) {
+                    String nombre = inicio.getString("nombre");
+                    String posicion = inicio.getString("posicion");
+                    String categoria = inicio.getString("categoria");
+                    int edad = inicio.getInt("edad");
+                    String nacionalidad = inicio.getString("nacionalidad");
+                    model.addRow(new Object[]{nombre, posicion, categoria, edad, nacionalidad});
+                }
+                
+                inicio.close();
+            
+            conexion.desconectar();
         } catch (SQLException ex) {
             ex.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Fallo en la busqueda.");
         }
     }
-	private class SwingAction extends AbstractAction {
-		public SwingAction() {
-			putValue(NAME, "SwingAction");
-			putValue(SHORT_DESCRIPTION, "Some short description");
-		}
-		public void actionPerformed(ActionEvent e) {
-		}
-	}
 }
 

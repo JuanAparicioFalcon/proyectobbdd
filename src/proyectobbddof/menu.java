@@ -4,6 +4,8 @@ import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 
+import Conexionbbdd.ConexionMysql;
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -76,29 +78,18 @@ public class menu extends JFrame {
 
         // Realizar la búsqueda en la base de datos
         try {
-            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/yourdatabase", "username", "password");
+        	ConexionMysql conexion = new ConexionMysql("root","test","login_proyecto");
+        	conexion.conectar();
             String query = "SELECT * FROM players WHERE " + field + " = ?";
-            PreparedStatement pst = conn.prepareStatement(query);
-            pst.setString(1, value);
-            ResultSet rs = pst.executeQuery();
-
-            // Agregar los resultados a la tabla
-            while (rs.next()) {
-                String[] row = {
-                        rs.getString("nombre"),
-                        rs.getString("posicion"),
-                        rs.getString("categoria"),
-                        rs.getString("edad"),
-                        rs.getString("nacionalidad")
-                };
-                model.addRow(row);
+            ResultSet inicio=conexion.ejecutarSelect(query);
+            if(inicio.next()) {
+            	
             }
-
-            rs.close();
-            pst.close();
-            conn.close();
+            
+            conexion.desconectar();
         } catch (SQLException ex) {
             ex.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Fallo en la busqueda.");
         }
     }
 }

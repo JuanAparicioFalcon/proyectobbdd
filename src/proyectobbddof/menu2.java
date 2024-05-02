@@ -61,6 +61,10 @@ public class menu2 extends JFrame {
         setContentPane(contentPane);
         contentPane.setLayout(null);
         
+        JButton btnNewButton = new JButton("Actualizar");
+        btnNewButton.setBounds(886, 115, 89, 23);
+        contentPane.add(btnNewButton);
+        
         table = new JTable();
         table.setBounds(184, 231, 822, 214);
         contentPane.add(table);
@@ -121,35 +125,63 @@ public class menu2 extends JFrame {
 
     private void performSearch(String field, String value) {
     	
-    	DefaultTableModel model = (DefaultTableModel) table.getModel();
-        model.setRowCount(0); // Limpiar la tabla antes de agregar nuevos resultados
-
-        // TODO: Replace with actual database connection and query execution
-    	try {
-        	ConexionMysql conexion = new ConexionMysql("root","test","login_proyecto");
-        	conexion.conectar();
-            String query = "SELECT * FROM players WHERE " + field + " = ?";
-            ResultSet inicio=conexion.ejecutarSelect(query);
-           
-            
-
-                // Agregar los resultados a la tabla
-                while (inicio.next()) {
-                    String nombre = inicio.getString("nombre");
-                    String posicion = inicio.getString("posicion");
-                    String categoria = inicio.getString("categoria");
-                    int edad = inicio.getInt("edad");
-                    String nacionalidad = inicio.getString("nacionalidad");
-                    model.addRow(new Object[]{nombre, posicion, categoria, edad, nacionalidad});
-                }
-                
-                inicio.close();
-            
-            conexion.desconectar();
-        } catch (SQLException ex) {
-            ex.printStackTrace();
-            JOptionPane.showMessageDialog(null, "Fallo en la busqueda.");
-        }
+    	int opcion = searchComboBox.
     }
+    public void mostrarDatosCliente(int opbuscar, String valor) {
+    	DefaultTableModel tcliente = new DefaultTableModel();
+    	tcliente.addColumn("NOMBRE");
+    	tcliente.addColumn("POSICION");
+    	tcliente.addColumn("EDAD");
+    	tcliente.addColumn("CATEGORIA");
+    	tcliente.addColumn("NACIONALIDAD");
+    	table.setModel(tcliente);
+    	
+    	String codsql;
+    	
+    	if(opbuscar == 0 && valor ==null) {
+    		codsql= "SELECT * FROM Cantera WHERE Nombre= '"+valor+"'";
+    	}else {
+    		if(opbuscar ==1 && valor !=null) {
+    			codsql= "SELECT * FROM Cantera WHERE Posicion = '"+valor+"'";
+    		}else {
+    			if(opbuscar ==2 && valor !=null) {
+    			codsql= "SELECT * FROM Cantera WHERE Edad = '"+valor+"'";
+    			}else {
+    				if(opbuscar ==3 && valor !=null){
+    					codsql= "SELECT * FROM Cantera WHERE Categoria = '"+valor+"'";
+    				}else {
+    					if(opbuscar ==4 && valor !=null) {
+    						codsql= "SELECT * FROM Cantera WHERE Nacionalidad = '"+valor+"'";
+    					}
+    				}
+    			}
+    		}
+    	}
+    }
+    public void Actualizar() {
+    	ConexionMysql conexion = new ConexionMysql("root","test","login_proyecto");
+    	int fila= table.getSelectedRow();
+    	String Nombre = table.getValueAt(fila, 0).toString();
+    	String Posicion = table.getValueAt(fila, 1).toString();
+    	int Edad = Integer.parseInt(this.table.getValueAt(fila, 2).toString());
+    	String Categoria = table.getValueAt(fila, 3).toString();
+    	String Nacionalidad = table.getValueAt(fila, 4).toString();
+    	
+    	try {
+    		conexion.conectar();
+			String sentencia2="UPDATE Cantera SET Nombre='"+Nombre+"',Posicion='"+Posicion+"',Edad='"+Edad+"',Categoria='"+Categoria+"',Nacionalidad='"+Nacionalidad+"')";
+			 conexion.ejecutarInsertDeleteUpdate(sentencia2);
+			 mostrarDatosCliente(0,null);
+    	} catch (SQLException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		} finally {
+			try {
+				conexion.desconectar();
+			} catch (SQLException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+		}
+	}
 }
-

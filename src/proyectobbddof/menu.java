@@ -22,6 +22,8 @@ import javax.swing.JCheckBox;
 import javax.swing.JList;
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 
 
 public class menu extends JFrame {
@@ -29,6 +31,7 @@ public class menu extends JFrame {
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private final JLabel lblfondo=new JLabel("");
+	private JTable table;
 
 	/**
 	 * Launch the application.
@@ -66,6 +69,22 @@ public class menu extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
+		
+		table = new JTable();
+		table.setModel(new DefaultTableModel(
+			new Object[][] {
+				{null, null, null, null, null},
+				{null, null, null, null, null},
+				{null, null, null, null, null},
+				{null, null, null, null, null},
+				{null, null, null, null, null},
+			},
+			new String[] {
+				"Nombre", "Posicion", "Edad", "Categoria", "Nacionalidad"
+			}
+		));
+		table.setBounds(262, 203, 722, 345);
+		contentPane.add(table);
 		btnNewButton_1.setBounds(1217, 600, 89, 23);
 		contentPane.add(btnNewButton_1);
 		

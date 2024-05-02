@@ -102,7 +102,7 @@ public class InicioSesion extends JFrame {
 					String sentencia="SELECT * FROM Usuarios WHERE Nombre='"+textField.getText()+"' AND Contraseña='"+new String (passwordField.getPassword())+"'";
 					ResultSet inicio=conexion.ejecutarSelect(sentencia);
 					if(inicio.next()) {
-						menu ventanaMenu = new menu();
+						menu2 ventanaMenu = new menu2();
 						ventanaMenu.setVisible(true);
 						dispose();
 					} else {

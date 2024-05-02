@@ -66,6 +66,8 @@ public class menu extends JFrame {
 				Image imagen2 =	icono2.getImage().getScaledInstance(lblFondo.getWidth(),lblFondo.getHeight(), Image.SCALE_SMOOTH);
 				ImageIcon iconoAjustado2 = new ImageIcon(imagen2);
 				lblFondo.setIcon(iconoAjustado2);
+				
+		
 		
 		
 	}

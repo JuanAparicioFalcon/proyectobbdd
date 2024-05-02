@@ -107,6 +107,8 @@ public class InicioSesion extends JFrame {
 						dispose();
 					} else {
 						JOptionPane.showMessageDialog(null, "Fallo al iniciar sesión.");
+						textField.setText(" ");
+						passwordField.setText("");
 					}
 					
 				} catch (SQLException e1) {

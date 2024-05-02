@@ -7,6 +7,10 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
+
+import Conexionbbdd.ConexionMysql;
+
 import javax.swing.JOptionPane;
 
 
@@ -30,18 +34,10 @@ public class menu2 extends JFrame {
     private String valor;
     private final Action action = new SwingAction();
     private JTable table;
+   
     
+   
     
-    public void MostrarJugadores() {
-    	DefaultTableModel tjugadores = new DefaultTableModel();
-    	tjugadores.addColumn("NOMBRE");
-    	tjugadores.addColumn("POSICION");
-    	tjugadores.addColumn("EDAD");
-    	tjugadores.addColumn("CATEGORIA");
-    	tjugadores.addColumn("NACIONALIDAD");
-    	table.setModel(tjugadores);
-    	String [] datos = new String[5];
-    }
 
     public static void main(String[] args) {
         EventQueue.invokeLater(() -> {
@@ -56,6 +52,13 @@ public class menu2 extends JFrame {
 
     public menu2() {
     	
+			
+			
+			
+			
+			
+			
+		
 
         setTitle("Manager App");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -69,6 +72,14 @@ public class menu2 extends JFrame {
         table = new JTable();
         table.setBounds(184, 231, 822, 214);
         contentPane.add(table);
+        
+        DefaultTableModel model = new DefaultTableModel();
+        model.addColumn("Nombre");
+        model.addColumn("Posición");
+        model.addColumn("Categoría");
+        model.addColumn("Edad");
+        model.addColumn("Nacionalidad");
+        table.setModel(model);
 
         // Components
         JComboBox<String> searchComboBox = new JComboBox<>(new String[]{"Nombre", "Posición", "Categoría", "Edad", "Nacionalidad"});
@@ -86,7 +97,7 @@ public class menu2 extends JFrame {
         searchButton.addMouseListener(new MouseAdapter() {
         	@Override
         	public void mouseClicked(MouseEvent e) {
-        		
+        		 performSearch(searchComboBox.getSelectedItem().toString(), searchField.getText());
         		
         	}
         });

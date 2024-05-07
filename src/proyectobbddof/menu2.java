@@ -61,7 +61,6 @@ public class menu2 extends JFrame {
         CampoBuscar.setBounds(494, 109, 198, 35); // Establecer posición y tamaño del campo de texto
         contentPane.add(CampoBuscar); // Agregar campo de texto al panel de contenido
 
-<<<<<<< Updated upstream
         // Botón para buscar
         JButton BtnBuscar = new JButton("Buscar"); // Crear objeto BtnBuscar de tipo JButton con texto "Buscar"
         BtnBuscar.setBounds(733, 113, 87, 27); // Establecer posición y tamaño del botón
@@ -69,7 +68,7 @@ public class menu2 extends JFrame {
         BtnBuscar.setBackground(new Color(255, 255, 0)); // Establecer color de fondo del botón
         BtnBuscar.setForeground(new Color(0, 0, 0)); // Establecer color del texto del botón
         contentPane.add(BtnBuscar); // Agregar botón al panel de contenido
-=======
+
         JButton searchButton = new JButton("Buscar");
         searchButton.addMouseListener(new MouseAdapter() {
         	@Override
@@ -89,12 +88,12 @@ public class menu2 extends JFrame {
         searchButton.setForeground(new Color(0, 0, 0));
         searchButton.setBounds(733, 113, 87, 27);
         contentPane.add(searchButton);
->>>>>>> Stashed changes
+
 
         // Manejador de eventos para el botón de búsqueda
         BtnBuscar.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-<<<<<<< Updated upstream
+
                 ConexionMysql conexion = new ConexionMysql("root","","login_proyecto"); // Crear objeto conexion de tipo ConexionMysql con parámetros
                 String sentencia=""; // Declaración de la variable sentencia como cadena
                 
@@ -138,7 +137,6 @@ public class menu2 extends JFrame {
                     } catch (SQLException e1) { // Capturar excepciones de SQL
                         e1.printStackTrace(); // Imprimir traza de excepción
                     }
-=======
                 performSearch(searchComboBox.getSelectedItem().toString(), searchField.getText());
             }
         });
@@ -178,11 +176,7 @@ public class menu2 extends JFrame {
                     int edad = inicio.getInt("edad");
                     String nacionalidad = inicio.getString("nacionalidad");
                     model.addRow(new Object[]{nombre, posicion, categoria, edad, nacionalidad});
->>>>>>> Stashed changes
-                }
-                
-            }
-        });
+
         
         // Tabla para mostrar resultados
         table = new JTable(); // Crear objeto table de tipo JTable

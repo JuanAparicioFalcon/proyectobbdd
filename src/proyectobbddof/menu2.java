@@ -61,7 +61,6 @@ public class menu2 extends JFrame {
         CampoBuscar.setBounds(494, 109, 198, 35); // Establecer posición y tamaño del campo de texto
         contentPane.add(CampoBuscar); // Agregar campo de texto al panel de contenido
 
-<<<<<<< Updated upstream
         // Botón para buscar
         JButton BtnBuscar = new JButton("Buscar"); // Crear objeto BtnBuscar de tipo JButton con texto "Buscar"
         BtnBuscar.setBounds(733, 113, 87, 27); // Establecer posición y tamaño del botón
@@ -69,33 +68,11 @@ public class menu2 extends JFrame {
         BtnBuscar.setBackground(new Color(255, 255, 0)); // Establecer color de fondo del botón
         BtnBuscar.setForeground(new Color(0, 0, 0)); // Establecer color del texto del botón
         contentPane.add(BtnBuscar); // Agregar botón al panel de contenido
-=======
-        JButton searchButton = new JButton("Buscar");
-        searchButton.addMouseListener(new MouseAdapter() {
-        	@Override
-        	//aqui deberia ir el try/catch
-        	public void mouseClicked(MouseEvent e) {
-        		
-        		
-        		
-        		 performSearch(searchComboBox.getSelectedItem().toString(), searchField.getText());
-        		 
-        		 
-        		
-        	}
-        });
-        searchButton.setFont(new Font("Mongolian Baiti", Font.BOLD, 15));
-        searchButton.setBackground(new Color(255, 255, 0));
-        searchButton.setForeground(new Color(0, 0, 0));
-        searchButton.setBounds(733, 113, 87, 27);
-        contentPane.add(searchButton);
->>>>>>> Stashed changes
 
         // Manejador de eventos para el botón de búsqueda
         BtnBuscar.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-<<<<<<< Updated upstream
-                ConexionMysql conexion = new ConexionMysql("root","","login_proyecto"); // Crear objeto conexion de tipo ConexionMysql con parámetros
+                ConexionMysql conexion = new ConexionMysql("root","test","login_proyecto"); // Crear objeto conexion de tipo ConexionMysql con parámetros
                 String sentencia=""; // Declaración de la variable sentencia como cadena
                 
                 try { // Intentar ejecutar
@@ -138,47 +115,6 @@ public class menu2 extends JFrame {
                     } catch (SQLException e1) { // Capturar excepciones de SQL
                         e1.printStackTrace(); // Imprimir traza de excepción
                     }
-=======
-                performSearch(searchComboBox.getSelectedItem().toString(), searchField.getText());
-            }
-        });
-        
-       
-        // Background Image Setup
-        JLabel lblFondo = new JLabel("");
-        lblFondo.setBounds(0, 0, 1200, 800);
-        ImageIcon icono2 = new ImageIcon(this.getClass().getResource("/img/fondo.jpg"));
-        Image imagen2 = icono2.getImage().getScaledInstance(lblFondo.getWidth(), lblFondo.getHeight(), Image.SCALE_SMOOTH);
-        ImageIcon iconoAjustado2 = new ImageIcon(imagen2);
-        lblFondo.setIcon(iconoAjustado2);
-        contentPane.add(lblFondo);
-    }
-    
-    
-
-    private  void performSearch(String field, String value) {
-    	
-    	DefaultTableModel model = (DefaultTableModel) table.getModel();
-        model.setRowCount(0); // Limpiar la tabla antes de agregar nuevos resultados
-
-        // TODO: Replace with actual database connection and query execution
-    	try {
-        	ConexionMysql conexion = new ConexionMysql("root","test","login_proyecto");
-        	conexion.conectar();
-            String query = "SELECT * FROM players WHERE " + field + " = ?";
-            ResultSet inicio=conexion.ejecutarSelect(query);
-           
-            
-
-                // Agregar los resultados a la tabla
-                while (inicio.next()) {
-                    String nombre = inicio.getString("nombre");
-                    String posicion = inicio.getString("posicion");
-                    String categoria = inicio.getString("categoria");
-                    int edad = inicio.getInt("edad");
-                    String nacionalidad = inicio.getString("nacionalidad");
-                    model.addRow(new Object[]{nombre, posicion, categoria, edad, nacionalidad});
->>>>>>> Stashed changes
                 }
                 
             }
